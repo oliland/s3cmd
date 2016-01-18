@@ -1443,7 +1443,7 @@ def local_copy(copy_pairs, destination_base):
             debug(u"Copying %s to %s" % (src_file, dst_file))
             shutil.copy2(deunicodise(src_file), deunicodise(dst_file))
             saved_bytes += src_obj.get(u'size', 0)
-        except (IOError, OSError), e:
+        except Exception as e:
             warning(u'Unable to copy or hardlink files %s -> %s (Reason: %s)' % (src_file, dst_file, e))
             failed_copy_list[relative_file] = src_obj
     return len(copy_pairs), saved_bytes, failed_copy_list
